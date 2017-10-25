@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ptp.phamtanphat.firebaseshop0208.Activity.NhapLoaiSanPhamActivity">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="#f20"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/textviewtitleloaisp"
+        android:text="Nhập dữ liệu lọai sản phẩm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="Nhập Id loại sản phẩm"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textviewtitleloaisp"
+        android:id="@+id/edittextidloaisp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="Nhập tên loại sản phẩm"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/edittextidloaisp"
+        android:id="@+id/edittexttenloaisp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imageviewloaisp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/edittexttenloaisp"
+        android:layout_width="250dp"
+        android:layout_height="200dp" />
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageviewloaisp"
+        android:text="Lưu loại sản phẩm"
+        android:id="@+id/buttonsaveloaisp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
