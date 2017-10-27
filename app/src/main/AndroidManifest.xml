@@ -18,12 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.NhapLoaiSanPhamActivity">
-
-        </activity>
-        <activity android:name=".Activity.NhapsanphamActivity">
-
-        </activity>
+        <activity android:name=".Activity.NhapLoaiSanPhamActivity" />
+        <activity android:name=".Activity.NhapsanphamActivity" />
+        <activity android:name=".Activity.ManhinhSanPhamActivity" />
+        <activity android:name=".Activity.ChitietSanPhamActivity"></activity>
     </application>
 
 </manifest>

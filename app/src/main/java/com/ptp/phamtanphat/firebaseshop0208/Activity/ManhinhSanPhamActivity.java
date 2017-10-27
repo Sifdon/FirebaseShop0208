@@ -6,52 +6,60 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.ptp.phamtanphat.firebaseshop0208.Adapter.LoaisanphamAdapter;
-import com.ptp.phamtanphat.firebaseshop0208.Model.Loaisanpham;
+import com.ptp.phamtanphat.firebaseshop0208.Adapter.SanphamAdapter;
+import com.ptp.phamtanphat.firebaseshop0208.Model.Sanpham;
 import com.ptp.phamtanphat.firebaseshop0208.R;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class ManhinhSanPhamActivity extends AppCompatActivity {
 
-    ListView lvloaisp;
-    LoaisanphamAdapter loaisanphamAdapter;
-    ArrayList<Loaisanpham> arrayListloaisp;
+    String idloaisp = "";
+    ListView lvsp;
+    ArrayList<Sanpham> sanphamArrayList;
+    SanphamAdapter sanphamAdapter;
     private DatabaseReference mData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_manhinh_san_pham);
 
         mData = FirebaseDatabase.getInstance().getReference();
-        lvloaisp = (ListView) findViewById(R.id.listviewloaisp);
-        arrayListloaisp = new ArrayList<>();
-        loaisanphamAdapter = new LoaisanphamAdapter(MainActivity.this,arrayListloaisp);
-        lvloaisp.setAdapter(loaisanphamAdapter);
-        GetLoaiSP();
-        lvloaisp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        final Intent intent = getIntent();
+        idloaisp = intent.getStringExtra("idloaisp");
+
+        lvsp = (ListView) findViewById(R.id.listviewsanpham);
+        sanphamArrayList = new ArrayList<>();
+        sanphamAdapter = new SanphamAdapter(ManhinhSanPhamActivity.this,sanphamArrayList);
+        lvsp.setAdapter(sanphamAdapter);
+        GetSPData();
+        lvsp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this,ManhinhSanPhamActivity.class);
-                intent.putExtra("idloaisp",arrayListloaisp.get(i).getIDLoaiSP());
-                startActivity(intent);
+                    Intent intentsp = new Intent(ManhinhSanPhamActivity.this,ChitietSanPhamActivity.class);
+                    intentsp.putExtra("sanpham",sanphamArrayList.get(i));
+                    startActivity(intentsp);
             }
         });
     }
 
-    private void GetLoaiSP() {
-        mData.child("Loaisanpham").addChildEventListener(new ChildEventListener() {
+    private void GetSPData() {
+        mData.child("Sanpham").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Loaisanpham loaisanpham = dataSnapshot.getValue(Loaisanpham.class);
-                arrayListloaisp.add(loaisanpham);
-                loaisanphamAdapter.notifyDataSetChanged();
+                Sanpham sanpham = dataSnapshot.getValue(Sanpham.class);
+                if (sanpham.getIdloaisp().equals(idloaisp)){
+                    sanphamArrayList.add(sanpham);
+                }
+                sanphamAdapter.notifyDataSetChanged();
             }
 
             @Override

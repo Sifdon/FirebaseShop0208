@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ptp.phamtanphat.firebaseshop0208.Activity.ChitietSanPhamActivity">
+
+    <ImageView
+        android:id="@+id/imageviewchitietsp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:layout_margin="5dp"
+        android:layout_width="170dp"
+        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/textviewtenchitiet"
+        android:textColor="#f20"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/imageviewchitietsp"
+        android:textSize="22sp"
+        android:text="Tên sản phẩm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/textviewgiachitiet"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/imageviewchitietsp"
+        android:textColor="#f11093"
+        android:textSize="18sp"
+        android:layout_below="@+id/textviewtenchitiet"
+        android:text="Giá sản phẩm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/imageviewchitietsp"
+        android:id="@+id/buttonmua"
+        android:text="Mua"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_below="@+id/buttonmua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Mô tả chi tiết về mặt hàng"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:id="@+id/textviewmota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+</RelativeLayout>

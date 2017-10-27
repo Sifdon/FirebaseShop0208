@@ -1,10 +1,13 @@
 package com.ptp.phamtanphat.firebaseshop0208.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by KhoaPhamPC on 25/10/2017.
  */
 
-public class Sanpham {
+public class Sanpham implements Parcelable{
     private String Idloaisp;
     private String Idsp;
     private String Tensp;
@@ -23,6 +26,27 @@ public class Sanpham {
         Hinhanhsp = hinhanhsp;
         Motasp = motasp;
     }
+
+    protected Sanpham(Parcel in) {
+        Idloaisp = in.readString();
+        Idsp = in.readString();
+        Tensp = in.readString();
+        Giasp = in.readString();
+        Hinhanhsp = in.readString();
+        Motasp = in.readString();
+    }
+
+    public static final Creator<Sanpham> CREATOR = new Creator<Sanpham>() {
+        @Override
+        public Sanpham createFromParcel(Parcel in) {
+            return new Sanpham(in);
+        }
+
+        @Override
+        public Sanpham[] newArray(int size) {
+            return new Sanpham[size];
+        }
+    };
 
     public String getIdloaisp() {
         return Idloaisp;
@@ -70,5 +94,20 @@ public class Sanpham {
 
     public void setMotasp(String motasp) {
         Motasp = motasp;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(Idloaisp);
+        parcel.writeString(Idsp);
+        parcel.writeString(Tensp);
+        parcel.writeString(Giasp);
+        parcel.writeString(Hinhanhsp);
+        parcel.writeString(Motasp);
     }
 }
