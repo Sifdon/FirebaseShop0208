@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.ptp.phamtanphat.firebaseshop0208.Model.Loaisanpham;
 import com.ptp.phamtanphat.firebaseshop0208.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -54,7 +55,13 @@ public class LoaisanphamAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.dong_loai_sanpham,null);
             viewHolder.imgloaisp = view.findViewById(R.id.imageviewloaisanpham);
             viewHolder.txtloaisp = view.findViewById(R.id.textviewloaisanpham);
+            view.setTag(viewHolder);
+        }else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        return null;
+        Loaisanpham loaisanpham = (Loaisanpham) getItem(i);
+        viewHolder.txtloaisp.setText(loaisanpham.getTenLoaiSP());
+        Picasso.with(context).load(loaisanpham.getHinhLoaiSP()).into(viewHolder.imgloaisp);
+        return view;
     }
 }
